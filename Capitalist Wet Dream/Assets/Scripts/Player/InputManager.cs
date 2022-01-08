@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour
         // _groundMovement.[action].performed += context => do something
         _groundMovement.Horizontalmovement.performed += ctx => _horizontalInput = ctx.ReadValue<Vector2>();
 
+        _groundMovement.Run.performed += ctx => movement.SetIsRunning(ctx.ReadValueAsButton());
         _groundMovement.Jump.performed += _ => movement.OnJumpPressed();
 
         _groundMovement.MouseX.performed += ctx => _mouseInput.x = ctx.ReadValue<float>();
