@@ -5,15 +5,15 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Movement movement;
     [SerializeField] private MouseLook mouseLook;
 
-    private Playercontrols _controls;
-    private Playercontrols.GroundMovementActions _groundMovement;
+    private Controls _controls;
+    private Controls.GroundMovementActions _groundMovement;
 
     private Vector2 _horizontalInput;
     private Vector2 _mouseInput;
 
     private void Awake()
     {
-        _controls = new Playercontrols();
+        _controls = new Controls();
         _groundMovement = _controls.GroundMovement;
 
         // _groundMovement.[action].performed += context => do something
