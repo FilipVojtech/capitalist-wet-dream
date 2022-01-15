@@ -8,10 +8,16 @@ public class MouseLook : MonoBehaviour
 
     [SerializeField] private Transform mainCamera;
     [SerializeField] private float xClamp = 85f;
-    private float _xRotation = 0f;
+    private float _xRotation;
 
     private void Update()
     {
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            _mouseX = 0;
+            _mouseY = 0;
+        }
+
         transform.Rotate(Vector3.up, _mouseX * Time.deltaTime);
 
         _xRotation -= _mouseY;

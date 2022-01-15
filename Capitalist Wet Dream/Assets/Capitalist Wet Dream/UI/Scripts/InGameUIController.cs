@@ -34,6 +34,7 @@ public class InGameUIController : MonoBehaviour
         _isSettingsOpen = _isPauseMenuOpen && _isSettingsOpen;
         pauseMenu.SetActive(_isPauseMenuOpen);
         settingsMenu.SetActive(_isSettingsOpen);
+        Cursor.lockState = _isPauseMenuOpen ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     private void OpenPauseMenu()
