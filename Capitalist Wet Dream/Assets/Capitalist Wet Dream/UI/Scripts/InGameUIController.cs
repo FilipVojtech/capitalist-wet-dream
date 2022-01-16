@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,11 +12,15 @@ public class InGameUIController : MonoBehaviour
     private bool _isSettingsOpen;
     [SerializeField] private GameObject settingsMenu;
 
+    private static string _actionDescription = "";
+
+    [SerializeField] private TMP_Text actionDescription;
+
     private void Awake()
     {
         _controls = new Controls();
 
-        _controls.GroundMovement.Cancel.performed += _ =>
+        _controls.Ground.Cancel.performed += _ =>
         {
             if (_isSettingsOpen) OnBackPress();
             else if (!_isSettingsOpen && _isPauseMenuOpen) OnContinuePress();
@@ -35,6 +40,7 @@ public class InGameUIController : MonoBehaviour
         pauseMenu.SetActive(_isPauseMenuOpen);
         settingsMenu.SetActive(_isSettingsOpen);
         Cursor.lockState = _isPauseMenuOpen ? CursorLockMode.None : CursorLockMode.Locked;
+        actionDescription.text = _actionDescription;
     }
 
     private void OpenPauseMenu()
@@ -71,5 +77,10 @@ public class InGameUIController : MonoBehaviour
     private void OnDisable()
     {
         _controls.Disable();
+    }
+
+    public static void SetActionDescription(string description)
+    {
+        _actionDescription = description;
     }
 }

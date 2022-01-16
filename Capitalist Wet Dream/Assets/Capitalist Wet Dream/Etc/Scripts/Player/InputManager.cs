@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private Movement movement;
     [SerializeField] private MouseLook mouseLook;
 
     private Controls _controls;
-    private Controls.GroundMovementActions _groundMovement;
+    private Controls.GroundActions _groundMovement;
 
     private Vector2 _horizontalInput;
     private Vector2 _mouseInput;
@@ -14,7 +16,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         _controls = new Controls();
-        _groundMovement = _controls.GroundMovement;
+        _groundMovement = _controls.Ground;
 
         // _groundMovement.[action].performed += context => do something
         _groundMovement.Horizontalmovement.performed += ctx => _horizontalInput = ctx.ReadValue<Vector2>();
@@ -24,6 +26,11 @@ public class InputManager : MonoBehaviour
 
         _groundMovement.MouseX.performed += ctx => _mouseInput.x = ctx.ReadValue<float>();
         _groundMovement.MouseY.performed += ctx => _mouseInput.y = ctx.ReadValue<float>();
+
+        _groundMovement.InteractMain.performed += ctx =>
+        {
+            if (ctx.interaction is PressInteraction) playerInteraction.OnPress();
+        };
     }
 
     private void Update()
