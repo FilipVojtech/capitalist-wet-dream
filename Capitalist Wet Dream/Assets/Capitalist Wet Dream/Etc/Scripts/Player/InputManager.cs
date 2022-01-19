@@ -29,8 +29,10 @@ public class InputManager : MonoBehaviour
 
         _groundMovement.InteractMain.performed += ctx =>
         {
-            if (ctx.interaction is PressInteraction) playerInteraction.OnPress();
+            if (ctx.interaction is PressInteraction) playerInteraction.Interact();
         };
+
+        _groundMovement.UseTool.performed += _ => playerInteraction.UseTool();
     }
 
     private void Update()

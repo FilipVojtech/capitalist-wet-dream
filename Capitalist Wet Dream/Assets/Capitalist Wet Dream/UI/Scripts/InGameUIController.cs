@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class InGameUIController : MonoBehaviour
@@ -13,8 +14,10 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private GameObject settingsMenu;
 
     private static string _actionDescription = "";
-
     [SerializeField] private TMP_Text actionDescription;
+
+    [SerializeField] private InputActionReference interactAction;
+    public static string interactionBind;
 
     private void Awake()
     {
@@ -30,8 +33,14 @@ public class InGameUIController : MonoBehaviour
 
     private void Start()
     {
+        var bindIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+        
         _isPauseMenuOpen = true;
         _isSettingsOpen = false;
+        interactionBind = InputControlPath.ToHumanReadableString(
+            interactAction.action.bindings[bindIndex].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice
+        );
     }
 
     private void Update()

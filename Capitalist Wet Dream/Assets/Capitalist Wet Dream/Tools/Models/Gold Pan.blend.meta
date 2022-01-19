@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Dirt_mat
+    second: {fileID: 2100000, guid: 138c2baa5b400bef7964253c0b3f8f2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Green plastic
     second: {fileID: 2100000, guid: b14f4bae4651387af8d22557b39addf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Water_mat
+    second: {fileID: 2100000, guid: 3614dfc350e7f7123a8555925846790a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

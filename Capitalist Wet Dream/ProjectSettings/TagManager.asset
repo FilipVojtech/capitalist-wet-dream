@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dig site
+  - Placeholder
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Placeholder
+  - Item
   - 
   - 
   - 

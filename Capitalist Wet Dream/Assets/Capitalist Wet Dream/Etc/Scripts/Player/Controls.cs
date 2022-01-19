@@ -89,6 +89,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseTool"",
+                    ""type"": ""Button"",
+                    ""id"": ""959be44e-d797-4eb6-af4e-12913f835829"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""InteractMain"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03069496-4e23-4faf-8153-a1202650621d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Mouse"",
+                    ""action"": ""UseTool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -250,6 +270,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Ground_Run = m_Ground.FindAction("Run", throwIfNotFound: true);
         m_Ground_Cancel = m_Ground.FindAction("Cancel", throwIfNotFound: true);
         m_Ground_InteractMain = m_Ground.FindAction("InteractMain", throwIfNotFound: true);
+        m_Ground_UseTool = m_Ground.FindAction("UseTool", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
     }
@@ -318,6 +339,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Ground_Run;
     private readonly InputAction m_Ground_Cancel;
     private readonly InputAction m_Ground_InteractMain;
+    private readonly InputAction m_Ground_UseTool;
     public struct GroundActions
     {
         private @Controls m_Wrapper;
@@ -329,6 +351,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_Ground_Run;
         public InputAction @Cancel => m_Wrapper.m_Ground_Cancel;
         public InputAction @InteractMain => m_Wrapper.m_Ground_InteractMain;
+        public InputAction @UseTool => m_Wrapper.m_Ground_UseTool;
         public InputActionMap Get() { return m_Wrapper.m_Ground; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -359,6 +382,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @InteractMain.started -= m_Wrapper.m_GroundActionsCallbackInterface.OnInteractMain;
                 @InteractMain.performed -= m_Wrapper.m_GroundActionsCallbackInterface.OnInteractMain;
                 @InteractMain.canceled -= m_Wrapper.m_GroundActionsCallbackInterface.OnInteractMain;
+                @UseTool.started -= m_Wrapper.m_GroundActionsCallbackInterface.OnUseTool;
+                @UseTool.performed -= m_Wrapper.m_GroundActionsCallbackInterface.OnUseTool;
+                @UseTool.canceled -= m_Wrapper.m_GroundActionsCallbackInterface.OnUseTool;
             }
             m_Wrapper.m_GroundActionsCallbackInterface = instance;
             if (instance != null)
@@ -384,6 +410,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @InteractMain.started += instance.OnInteractMain;
                 @InteractMain.performed += instance.OnInteractMain;
                 @InteractMain.canceled += instance.OnInteractMain;
+                @UseTool.started += instance.OnUseTool;
+                @UseTool.performed += instance.OnUseTool;
+                @UseTool.canceled += instance.OnUseTool;
             }
         }
     }
@@ -431,6 +460,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnInteractMain(InputAction.CallbackContext context);
+        void OnUseTool(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
