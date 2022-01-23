@@ -74,12 +74,11 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Dig site"))
                 {
-                    Debug.Log("lol");
                     _shovelTool.Use();
                 }
 
                 var panScript = hit.collider.GetComponentInChildren<GoldPan>();
-                if (panScript != null && _shovelTool.IsDirtVisible)
+                if (panScript != null && ToolState.HasShovelDirt)
                 {
                     _shovelTool.Use();
                     panScript.FillDirt();

@@ -6,20 +6,9 @@ public class GoldPan : Tool
     private static readonly int Sieve = Animator.StringToHash("Sieve");
     private static readonly int Dump = Animator.StringToHash("Dump");
 
-    public bool HasDirt { get; set; }
     [SerializeField] private GameObject dirt;
-    public bool HasWater { get; set; }
     [SerializeField] private GameObject water;
-    public bool HasGold { get; set; }
     [SerializeField] private GameObject gold;
-
-
-    private void Start()
-    {
-        HasDirt = false;
-        HasWater = false;
-        HasGold = false;
-    }
 
     private void Update()
     {
@@ -27,13 +16,17 @@ public class GoldPan : Tool
         {
             FillWater();
         }
+
+        dirt.SetActive(ToolState.HasPanDirt);
+        water.SetActive(ToolState.HasPanWater);
+        gold.SetActive(ToolState.HasPanGold);
     }
 
     public override void Use()
     {
         animator.SetTrigger(Sieve);
 
-        if (HasDirt && HasWater)
+        if (ToolState.HasPanDirt && ToolState.HasPanWater)
         {
             EmptyDirt();
             EmptyWater();
@@ -49,37 +42,31 @@ public class GoldPan : Tool
 
     public void FillDirt()
     {
-        HasDirt = true;
-        dirt.SetActive(true);
+        ToolState.HasPanDirt = true;
     }
 
     public void EmptyDirt()
     {
-        HasDirt = false;
-        dirt.SetActive(false);
+        ToolState.HasPanDirt = false;
     }
 
     public void FillWater()
     {
-        HasWater = true;
-        water.SetActive(true);
+        ToolState.HasPanWater = true;
     }
 
     public void EmptyWater()
     {
-        HasWater = false;
-        water.SetActive(false);
+        ToolState.HasPanWater = false;
     }
 
     public void FillGold()
     {
-        HasGold = true;
-        gold.SetActive(true);
+        ToolState.HasPanGold = true;
     }
 
     public void EmptyGold()
     {
-        HasGold = false;
-        gold.SetActive(false);
+        ToolState.HasPanGold = false;
     }
 }

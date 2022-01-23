@@ -132,6 +132,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 121665576}
+  - component: {fileID: 121665577}
+  - component: {fileID: 121665580}
+  - component: {fileID: 121665579}
+  - component: {fileID: 121665578}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -157,6 +161,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &121665577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121665575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2212982, y: 3.884407, z: 101.0677}
+  m_Center: {x: 19.410095, y: -1.798069, z: 12.454697}
+--- !u!65 &121665578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121665575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 101.0677, y: 3.884407, z: 1.221298}
+  m_Center: {x: -30.3, y: -1.798069, z: 62.3}
+--- !u!65 &121665579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121665575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 101.0677, y: 3.884407, z: 1.221298}
+  m_Center: {x: -30.3, y: -1.798069, z: -37.8}
+--- !u!65 &121665580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121665575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2212982, y: 3.884407, z: 101.0677}
+  m_Center: {x: -80.4, y: -1.798069, z: 12.454697}
 --- !u!1 &163275196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1660,7 @@ GameObject:
   - component: {fileID: 833459580}
   - component: {fileID: 833459579}
   - component: {fileID: 833459582}
+  - component: {fileID: 833459583}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1684,6 +1741,18 @@ MonoBehaviour:
   startDayAtHoursDecimal: 7.75
   sun: {fileID: 705507995}
   digitalClock: {fileID: 709952336}
+--- !u!114 &833459583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833459578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cf66919c1b96206a2354f5bbcf8d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3376,7 +3445,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1134138347646146644, guid: c790d3a5dd216d690b7868978f18f89d, type: 3}
       propertyPath: initialToolType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1134138347646146645, guid: c790d3a5dd216d690b7868978f18f89d, type: 3}
       propertyPath: m_RootOrder
